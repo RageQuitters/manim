@@ -2,6 +2,36 @@ from manim import *
 from input import arr, target
 
 class BinarySearchWithSlice(Scene):
+    """
+        An animated visualization of binary search on a list with visual slicing.
+
+        This Manim scene demonstrates binary search on a given array `arr` to locate a 
+        target value `target`. The array elements are displayed as boxes with their values,
+        and pointers L (low), M (middle), and R (high) are animated to indicate the current
+        search bounds.
+
+        Features:
+        - Displays the target value at the top.
+        - Shows the array as a sequence of boxes with numbers.
+        - Animates pointers for low (L), middle (M), and high (R) positions.
+        - Highlights each step of the binary search algorithm on the right:
+            0. If array empty → return False
+            1. Find middle element
+            2. If middle == target → return True
+            3a. If target < middle → search left
+            3b. Else → search right
+        - Discards elements outside the current search range by dropping them visually.
+        - Highlights the middle element being considered in orange, and the target element in green
+        once found.
+        - Updates pointers and adjusts them visually if low and high coincide.
+
+        Attributes:
+            arr (list): The array to perform binary search on, imported from `input.py`.
+            target (int/float): The value to search for in `arr`, imported from `input.py`.
+
+        Usage:
+            python -m manim -pqh binary_search_animation.py BinarySearchWithSlice
+    """
     def construct(self):
         # ------------------------------
         # Header showing target
@@ -32,7 +62,7 @@ class BinarySearchWithSlice(Scene):
         low_label = Text("L", color=BLUE).scale(0.7)
         mid_label = Text("M", color=YELLOW).scale(0.7)
         high_label = Text("R", color=RED).scale(0.7)
-        self.add(low_label, mid_label, high_label)
+        self.add(mid_label)
 
         # ------------------------------
         # Algorithm steps on the right
@@ -110,6 +140,7 @@ class BinarySearchWithSlice(Scene):
             # Update pointers
             # ------------------------------
             # Offset L and R if pointing to the same box
+            """
             if low == high - 1:
                 self.play(
                     low_label.animate.next_to(array_items[low][0], DOWN + LEFT * 0.3),
@@ -120,7 +151,7 @@ class BinarySearchWithSlice(Scene):
                     low_label.animate.next_to(array_items[low][0], DOWN),
                     high_label.animate.next_to(array_items[high - 1][0], DOWN),
                 )
-
+            """
             # Move mid pointer
             self.play(mid_label.animate.next_to(array_items[mid][0], UP))
             self.wait(0.5)

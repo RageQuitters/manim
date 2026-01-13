@@ -22,6 +22,12 @@ Make sure you have Python 3 installed. Then, install Manim:
 pip install manim
 ```
 
+Change the arr and target for the binary search by replacing the default arguments in input.py
+```python
+arr = [1,3,5,7,9,11,13]
+target = 9
+```
+
 ## Running the Animation
 Open a terminal and navigate to the folder containing the animation:
 

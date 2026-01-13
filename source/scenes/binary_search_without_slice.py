@@ -2,7 +2,46 @@ from manim import *
 from input import arr, target
 
 class BinarySearchWithoutSlice(Scene):
+    """
+    An animated visualization of binary search without slicing the array.
+
+    This Manim scene demonstrates binary search on a given array `arr` to locate a 
+    target value `target`, avoiding inefficient list slicing. Instead of removing elements,
+    a green box highlights the current search space, and pointers L (low), M (middle),
+    and R (high) are animated to indicate the search bounds.
+
+    Features:
+    - Displays a note at the beginning explaining why slicing is inefficient.
+    - Shows the target value at the top.
+    - Displays the array as a sequence of boxes with numbers.
+    - Animates pointers for low (L), middle (M), and high (R) positions.
+    - Highlights each step of the binary search algorithm on the right:
+        0. If array empty -> return False
+        1. Find middle element
+        2. If middle == target -> return True
+        3a. If target < middle -> search left
+        3b. Else -> search right
+    - Uses a green rectangle to indicate the current search space instead of dropping elements.
+    - Updates pointers and offsets them visually if low and high coincide.
+    - Highlights the middle element being considered in orange, and the target element in green
+      once found.
+
+    Attributes:
+        arr (list): The array to perform binary search on, imported from `input.py`.
+        target (int/float): The value to search for in `arr`, imported from `input.py`.
+
+    Usage:
+        python -m manim -pql binary_search_animation.py BinarySearchWithoutSlice
+    """
     def construct(self):
+         # ------------------------------
+        # Justificatuion for not slicing
+        # ------------------------------
+        my_text = Text("Note that slicing creates new lists, which is inefficient.", font_size=32)
+        self.play(Write(my_text))
+        self.wait(2)
+        self.play(FadeOut(my_text))
+
         # ------------------------------
         # Header showing target
         # ------------------------------
