@@ -1,0 +1,2 @@
+file 'media/videos/binary_search_animation/1080p60/BinarySearchWithSlice.mp4'
+file 'media/videos/binary_search_animation/1080p60/BinarySearchWithoutSlice.mp4'
